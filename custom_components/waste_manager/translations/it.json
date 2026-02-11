@@ -1,0 +1,51 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configurazione Gestione Rifiuti",
+                "description": "Inserisci il tipo di rifiuto per ogni giorno della settimana (opzionale). Separa più tipi con una virgola.",
+                "data": {
+                    "monday": "Lunedì",
+                    "tuesday": "Martedì",
+                    "wednesday": "Mercoledì",
+                    "thursday": "Giovedì",
+                    "friday": "Venerdì",
+                    "saturday": "Sabato",
+                    "sunday": "Domenica",
+                    "collection_start": "Orario Inizio Esposizione (es. 20:00)",
+                    "collection_end": "Orario Fine Esposizione (es. 06:00)"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Opzioni Gestione Rifiuti",
+                "description": "Aggiorna il tipo di rifiuto per ogni giorno della settimana. Separa più tipi con una virgola.",
+                "data": {
+                    "monday": "Lunedì",
+                    "tuesday": "Martedì",
+                    "wednesday": "Mercoledì",
+                    "thursday": "Giovedì",
+                    "friday": "Venerdì",
+                    "saturday": "Sabato",
+                    "sunday": "Domenica",
+                    "collection_start": "Orario Inizio Esposizione",
+                    "collection_end": "Orario Fine Esposizione",
+                    "notify_service": "Servizio di Notifica (es. notify.mobile_app_...)",
+                    "notify_time": "Orario Notifica (HH:MM)"
+                }
+            },
+            "notifications": {
+                "title": "Configura Notifiche",
+                "description": "Scegli il servizio di notifica e l'orario per ricevere il promemoria. Seleziona anche un'entità da accendere (es. scena, luce) se vuoi.",
+                "data": {
+                    "notify_service": "Servizio di Notifica",
+                    "notify_time": "Orario Notifica",
+                    "action_entity": "Dispositivo da Accendere/Eseguire (Opzionale)"
+                }
+            }
+        }
+    }
+}

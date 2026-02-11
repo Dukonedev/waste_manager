@@ -1,0 +1,40 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Waste Manager Configuration",
+                "description": "Enter the type of waste for each day of the week (optional). Separate multiple types with a comma.",
+                "data": {
+                    "monday": "Monday",
+                    "tuesday": "Tuesday",
+                    "wednesday": "Wednesday",
+                    "thursday": "Thursday",
+                    "friday": "Friday",
+                    "saturday": "Saturday",
+                    "sunday": "Sunday",
+                    "collection_start": "Collection Start Time (e.g. 20:00)",
+                    "collection_end": "Collection End Time (e.g. 06:00)"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Waste Manager Options",
+                "description": "Update the type of waste for each day of the week. Separate multiple types with a comma.",
+                "data": {
+                    "monday": "Monday",
+                    "tuesday": "Tuesday",
+                    "wednesday": "Wednesday",
+                    "thursday": "Thursday",
+                    "friday": "Friday",
+                    "saturday": "Saturday",
+                    "sunday": "Sunday",
+                    "collection_start": "Collection Start Time",
+                    "collection_end": "Collection End Time"
+                }
+            }
+        }
+    }
+}
