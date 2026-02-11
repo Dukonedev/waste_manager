@@ -34,7 +34,8 @@
                     "collection_start": "Orario Inizio Esposizione",
                     "collection_end": "Orario Fine Esposizione",
                     "notify_service": "Servizio di Notifica (es. notify.mobile_app_...)",
-                    "notify_time": "Orario Notifica (HH:MM)"
+                    "notify_time": "Orario Notifica (HH:MM)",
+                    "exceptions": "Eccezioni / Festività (DD/MM: Rifiuto o Nessuno)"
                 }
             },
             "notifications": {

@@ -32,7 +32,8 @@
                     "saturday": "Saturday",
                     "sunday": "Sunday",
                     "collection_start": "Collection Start Time",
-                    "collection_end": "Collection End Time"
+                    "collection_end": "Collection End Time",
+                    "exceptions": "Exceptions"
                 }
             }
         }
