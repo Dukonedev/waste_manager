@@ -54,13 +54,7 @@ async def async_setup_entry(
 
     async_add_entities(entities)
 
-    # Register Service
-    platform = entity_platform.async_get_current_platform()
-    platform.async_register_entity_service(
-        "set_collected",
-        {},
-        "async_mark_as_collected",
-    )
+
 
 
 class WasteTypeSensor(SensorEntity):

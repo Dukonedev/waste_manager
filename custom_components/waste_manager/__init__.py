@@ -18,53 +18,33 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Waste Manager from a config entry."""
     hass.data.setdefault(DOMAIN, {})
 
-    # Register static paths
-    await hass.http.async_register_static_paths([
-        StaticPathConfig(
-            "/local/waste_manager",
-            hass.config.path("custom_components/waste_manager/www"),
-            cache_headers=False,
-        ),
-        StaticPathConfig(
-            "/local/waste_manager/rifiuti",
-            hass.config.path("custom_components/waste_manager/rifiuti"),
-            cache_headers=False,
-        )
-    ])
-    
-    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    
-    # Setup Notification Scheduler
-    await async_setup_scheduler(hass, entry)
-
-    # Register Service
-    async def async_handle_set_collected(call):
-        """Handle the service call to mark waste as collected."""
-        entity_id = call.data.get("entity_id")
-        # If entity_id is a list, execute for each
-        if isinstance(entity_id, list):
-            entity_id = entity_id[0] # Simplification for now, or loop
-            
-        _LOGGER.debug("Marking as collected for entity: %s", entity_id)
+    try:
+        # Register static paths
+        path_www = hass.config.path("custom_components/waste_manager/www")
+        path_rifiuti = hass.config.path("custom_components/waste_manager/rifiuti")
+        _LOGGER.info("Waste Manager registering static paths: %s -> %s", "/local/waste_manager", path_www)
         
-        # Find the entity
-        # We need to find the entity object to call a method on it.
-        # However, accessing entities directly is tricky.
-        # Better approach: Fire an event or use helpers.service.entity_service_call
-        # BUT, since we have a custom component, we can use platform services or just iterate entities.
+        await hass.http.async_register_static_paths([
+            StaticPathConfig(
+                "/local/waste_manager",
+                path_www,
+                cache_headers=False,
+            ),
+            StaticPathConfig(
+                "/local/waste_manager/rifiuti",
+                path_rifiuti,
+                cache_headers=False,
+            )
+        ])
         
-        # Let's use hass.states.get to verify it exists, but we need the object.
-        # Actually, best practice for entity services involves platform setup.
-        # For simplicity in __init__:
-        # We can just define the service here and try to locate the entity instance if we stored it?
-        # We stored entry in data.
-        pass
-
-    # Easier: Register the service in the SENSOR platform or use standard EntityService.
-    # Let's verify if we can do it in sensor.py using platform_services.
-    # Alternatively, just signal the entity.
-    
-    hass.services.async_register(DOMAIN, "set_collected", async_handle_set_collected)
+        await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+        
+        # Setup Notification Scheduler
+        await async_setup_scheduler(hass, entry)
+        
+    except Exception as e:
+        _LOGGER.exception("Error setting up Waste Manager integration: %s", e)
+        return False
 
     entry.async_on_unload(entry.add_update_listener(update_listener))
 

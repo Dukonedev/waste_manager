@@ -1,3 +1,4 @@
+console.info("Waste Manager Card: Loaded v1.0.1");
 class WasteCard extends HTMLElement {
     constructor() {
         super();
